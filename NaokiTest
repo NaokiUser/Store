@@ -7358,11 +7358,11 @@ Tabs.Misc:AddButton({
 	end
 })
 
-local Section = C:AddSection({
+local Section = Misc:AddSection({
     Name = "Misc Players"
 })
 
-C:AddToggle({
+Tabs.Misc::AddToggle({
     Name = "Infinity Soru",
     Default = false,
     Callback = function(Value)
