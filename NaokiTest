@@ -7358,32 +7358,38 @@ Tabs.Misc:AddButton({
 	end
 })
 
-local Section = SV:AddSection({
-    Name = "Misc Sever"
+local Section = C:AddSection({
+    Name = "Misc Players"
 })
 
-        SV:AddTextbox({
-            Name = "Job Id Placed",
-            Default = "",
-            TextDisappear = true,
-            Callback = function(Value)
-                _G.Job = Value 
-            end	  
-        })
-
-        SV:AddButton({
-            Name = "Join Id",
-            Callback = function()
-                _G.AutoRejoin = false
-                game:GetService("TeleportService"):TeleportToPlaceInstance(game.placeId,_G.Job, game.Players.LocalPlayer)
-              end    
-        })
-
-        SV:AddButton({
-            Name = "Copy Job Id",
-            Callback = function()
-                setclipboard(tostring(game.JobId))
-              end
+C:AddToggle({
+    Name = "Infinity Soru",
+    Default = false,
+    Callback = function(Value)
+        getgenv().InfSoru = Value
+    end    
+})
+spawn(function()
+    while wait() do
+        pcall(function()
+            if getgenv().InfSoru and game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart") ~= nil  then
+                for i,v in next, getgc() do
+                    if game:GetService("Players").LocalPlayer.Character.Soru then
+                        if typeof(v) == "function" and getfenv(v).script == game:GetService("Players").LocalPlayer.Character.Soru then
+                            for i2,v2 in next, getupvalues(v) do
+                                if typeof(v2) == "table" then
+                                    repeat wait(0.1)
+                                        v2.LastUse = 0
+                                    until not getgenv().InfSoru or game:GetService("Players").LocalPlayer.Character.Humanoid.Health <= 0
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
 
 local Mastery = Tabs.Misc:AddSection("Day")
 
